@@ -22,12 +22,13 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description)
+    params.require(:ticket).permit(:title, :description, :asset)
   end
 
   def set_ticket
     @ticket = @project.tickets.find(params[:id])
   end
+
   def set_project
     @project = Project.find(params[:project_id])
   end
