@@ -11,6 +11,7 @@ class TicketsController < ApplicationController
   end
 
   def create
+    binding.pry
     @ticket = @project.tickets.build(ticket_params)
     if @ticket.save
       flash[:notice] = "Ticket has been created."

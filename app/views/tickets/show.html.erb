@@ -1,6 +1,11 @@
 <div id='ticket'>
   <h2><%= @ticket.title %></h2>
     <%= simple_format(@ticket.description) %>
+    <div id='tags'>
+      <%if @ticket.tags %>
+        <% render @ticket.tags.select(&:persisted) %>   
+      <% end %>
+    </div>
     <% if @ticket.assets.present?  %>
       <h3>Attached Files</h3>
       <div class="assets">
