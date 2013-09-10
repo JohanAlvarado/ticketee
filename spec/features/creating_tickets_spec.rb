@@ -43,9 +43,9 @@ feature "Creating Tickets" do
     click_button "Create Ticket"
     expect(page).to have_content("Ticket has been created.")
     within("#ticket .assets") do
-    expect(page).to have_content("speed.txt")
-    expect(page).to have_content("spin.txt")
-    expect(page).to have_content("gradient.txt")
+      expect(page).to have_content("speed.txt")
+      expect(page).to have_content("spin.txt")
+      expect(page).to have_content("gradient.txt")
+    end
   end
-end
 end
