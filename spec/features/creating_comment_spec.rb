@@ -9,4 +9,13 @@ feature "Creating comments" do
     visit '/'
     click_link project.name
   end
+  scenario "Changing a ticket's state" do
+    fill_in "Text", :with => "This is a real issue"
+    select "Open", :from => "State"
+    click_button "Create Comment" 
+    page.should have_content("Comment has been created.")
+    within("#ticket .state") do
+      page.should have_content("Open")
+    end
+  end
 end
