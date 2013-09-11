@@ -2,8 +2,10 @@
   <h2><%= @ticket.title %></h2>
     <%= simple_format(@ticket.description) %>
     <div id='tags'>
+      tags
+      <%= render @ticket.tags  %>
       <%if @ticket.tags %>
-        <% render @ticket.tags.select(&:persisted) %>   
+        <% render @ticket.tags.select(&:persisted?) %>   
       <% end %>
     </div>
     <% if @ticket.assets.present?  %>
@@ -24,6 +26,7 @@
     <div id='comments'>
       <% if @ticket.comments.exists? %> 
         <%= render @ticket.comments.select(&:persisted?) %>
+
       <% else %>
         There are no comments for this ticket.
       <% end %>

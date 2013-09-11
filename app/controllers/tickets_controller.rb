@@ -12,7 +12,6 @@ class TicketsController < ApplicationController
   end
 
   def create
-    binding.pry
     @ticket = @project.tickets.build(ticket_params)
     if @ticket.save
       flash[:notice] = "Ticket has been created."
@@ -26,7 +25,7 @@ class TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description,assets_attributes: [:asset])
+    params.require(:ticket).permit(:title, :description,:tag_names,assets_attributes: [:asset])
   end
 
   def set_ticket
