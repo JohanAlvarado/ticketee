@@ -3,7 +3,6 @@
   <span id='author'></span>
     <%= simple_format(@ticket.description) %>
     <div id='tags'>
-      tags
       <%= render @ticket.tags  %>
       <%if @ticket.tags %>
         <% render @ticket.tags.select(&:persisted?) %>   

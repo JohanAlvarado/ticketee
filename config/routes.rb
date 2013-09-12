@@ -13,11 +13,20 @@ Ticketee::Application.routes.draw do
   resources :users
 
   resources :projects do
-    resources :tickets 
+    resources :tickets do
+      collection do
+        get :search
+      end
+    end
   end
 
   resources :tickets do
-    resources :comments
+    resources :comments 
+    resources :tags do
+      member do
+        delete :remove
+      end
+    end
   end
 
 end
