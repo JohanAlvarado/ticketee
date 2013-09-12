@@ -25,6 +25,12 @@ class TicketsController < ApplicationController
     end
   end
 
+  def search
+    @tickets = @project.tickets.search(params[:search])
+    @project.tickets = @tickets
+    redirect_to [@project]
+  end
+
   private
 
   def ticket_params

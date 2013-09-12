@@ -33,6 +33,8 @@ gem 'carrierwave', '0.8.0'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'searcher', git: 'git://github.com/Stial08/searcher'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

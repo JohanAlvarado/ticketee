@@ -11,14 +11,18 @@ class Ticket < ActiveRecord::Base
   has_and_belongs_to_many :tags
   before_create :associate_tags
 
+  searcher do
+    label :tag, :from => :tags, :field => :name
+  end
+
   private
 
   def associate_tags
     if tag_names
       tag_names.split(",").each do |name|
-        binding.pry
         self.tags << Tag.find_or_create_by_name(name)
       end
     end
   end
-end
+
+ end
