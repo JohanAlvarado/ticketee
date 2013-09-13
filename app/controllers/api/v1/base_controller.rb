@@ -1,5 +1,6 @@
 class Api::V1::BaseController < ActionController::Base
   before_filter :authenticate_user
+  before_filter :check_rate_limit
 
   respond_to :json,:xml
 
@@ -13,7 +14,7 @@ class Api::V1::BaseController < ActionController::Base
   end
 
   def current_user
-    @current_user
+   User.find_by_id!(session[:user_id]) if session[:user_id] != nil
   end
 
   def authorize_admin!
@@ -21,6 +22,15 @@ class Api::V1::BaseController < ActionController::Base
       error = { :error => "You must be an admin to do that." }
       warden.custom_failure! 
       render params[:format].to_sym => error, :status => 401
+    end
+  end
+
+  def check_rate_limit
+    if @current_user.request_count > 10
+      error = { :error => "Rate limit exceeded." }
+      respond_with(error, :status => 403)
+    else
+      @current_user.increment!(:request_count)
     end
   end
 
