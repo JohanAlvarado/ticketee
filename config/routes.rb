@@ -1,6 +1,5 @@
 Ticketee::Application.routes.draw do
 
-
   root :to => "projects#index"
 
   namespace :admin do
@@ -32,8 +31,8 @@ Ticketee::Application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :projects do
-        resources :tickets
+      resources :projects, defaults: {format: :json} do
+        resources :tickets, defaults: {format: :json}
       end
     end
   end

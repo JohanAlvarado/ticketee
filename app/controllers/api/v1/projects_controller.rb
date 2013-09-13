@@ -2,11 +2,10 @@ class Api::V1::ProjectsController < Api::V1::BaseController
   before_filter :find_project, :only => [:show,:update,:destroy]
 
   def index
-    respond_with(Project.all.where("user_id = ?", current_user))
+    respond_with(current_user.projects)
   end
 
   def show
-    @project = Project.find(params[:id])
     respond_with(@project, :methods => "last_ticket")
   end
 
