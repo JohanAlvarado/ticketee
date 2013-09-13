@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-
   has_secure_password
   after_save :send_notification
 
