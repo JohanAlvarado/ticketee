@@ -1,9 +1,6 @@
 class Api::V1::BaseController < ActionController::Base
   before_filter :authenticate_user
 
-  #def index
-  #respond_with(Project.all)
-  #end
   respond_to :json,:xml
 
   private
