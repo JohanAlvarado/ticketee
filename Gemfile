@@ -33,6 +33,8 @@ gem 'carrierwave', '0.8.0'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 
+gem 'devise'
+
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
 
 group :doc do

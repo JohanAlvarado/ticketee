@@ -9,9 +9,10 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
   end
-  
+
   def create
     @project = Project.new(project_params)
+    @project.user = current_user
     if @project.save
       flash[:notice] = "Project has been created."
       redirect_to @project
@@ -46,17 +47,23 @@ class ProjectsController < ApplicationController
   def show
     @tickets = @project.tickets
   end
-  
+
   def project_params
     params.require(:project).permit(:name, :description)
   end
 
   def set_project
     @project = Project.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you were looking" +
-    " for could not be found."
+      " for could not be found."
     redirect_to projects_path
   end
- 
+
+  def authorize_admin!
+    unless current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+      redirect_to root_path
+    end
+  end
 end
