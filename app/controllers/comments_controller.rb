@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @ticket.comments.build(comment_params)
     if @comment.save
+      send_notification
       flash[:notice] = "Comment has been created."
       redirect_to [@ticket.project, @ticket] 
     else
@@ -21,6 +22,10 @@ class CommentsController < ApplicationController
 
   def find_ticket
     @ticket = Ticket.find(params[:ticket_id])
+  end
+
+  def send_notification
+    Notifier.user_created(current_user).deliver
   end
 
 end
