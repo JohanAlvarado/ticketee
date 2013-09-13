@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
-  devise :token_authenticatable
   has_secure_password
-  after_save :send_notification
+  #after_save :send_notification, :only => [:create]
 
-  def send_notification
-    Notifier.user_created(self).deliver
-  end
+  #def send_notification
+    #Notifier.user_created(self).deliver
+  #end
   
 end
