@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Notifier.user_created(self).deliver
+      Notifier.user_created(@user).deliver
       flash[:notice] = "You have signed up successfully."
       redirect_to projects_path
     else
