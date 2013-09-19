@@ -41,6 +41,8 @@ gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
 
+gem 'kaminari'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
