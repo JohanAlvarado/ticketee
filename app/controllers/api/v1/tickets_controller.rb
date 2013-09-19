@@ -1,4 +1,4 @@
-class Api::V1::TicketsController < Api::V1::BaseController
+class Api::V1::TicketsController < Api::BaseController
   before_filter :find_project
 
   def index

@@ -1,4 +1,4 @@
-class Api::V1::ProjectsController < Api::BaseController
+class Api::V2::ProjectsController < Api::BaseController
   before_filter :find_project, :only => [:show,:update,:destroy]
 
   def index
@@ -31,7 +31,7 @@ class Api::V1::ProjectsController < Api::BaseController
   private
   def find_project
     @project = Project.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound
     error = { :error => "The project you were looking for " +
               "could not be found."}
     respond_with(error, :status => 404)
