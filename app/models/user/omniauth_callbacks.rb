@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
         user.twitter_screen_name = data["screen_name"]
         user.twitter_display_name = data["display_name"]
         user.password_confirmation = user.password
+        user.name = data["screen_name"]
         user.save!
         user
       end
@@ -26,6 +27,7 @@ class User < ActiveRecord::Base
         user.github_user_name = data["login"]
         user.github_display_name = data["name"]
         user.password_confirmation = user.password
+        user.name = data["name"]
         user.save!
         user
       end
