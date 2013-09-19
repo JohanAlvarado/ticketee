@@ -26,8 +26,8 @@ class TicketsController < ApplicationController
   end
 
   def search
-    @tickets = @project.tickets.search(params[:search])
-    @project.tickets = @tickets
+    @tickets = @project.tickets.search("tag:#{params[:search]}")
+    @project.tickets = @tickets.page(params[:page]).per(5)
     redirect_to [@project]
   end
 
