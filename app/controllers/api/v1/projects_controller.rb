@@ -1,4 +1,4 @@
-class Api::V1::ProjectsController < Api::V1::BaseController
+class Api::V1::ProjectsController < Api::BaseController
   before_filter :find_project, :only => [:show,:update,:destroy]
 
   def index
