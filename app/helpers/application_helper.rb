@@ -10,10 +10,15 @@ module ApplicationHelper
 
   def current_user
     User.find_by_id!(session[:user_id]) if session[:user_id] != nil
+  rescue ActiveRecord::RecordNotFound
   end
 
   def admins_only(&block)
     block.call if current_user.try(:admin?)
+  end
+
+  def resource_class
+    devise_mapping.to
   end
 
 end

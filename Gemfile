@@ -35,6 +35,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'devise'
 
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github'
+
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+
 gem 'searcher', git: 'git://github.com/Stial08/searcher'
 
 group :doc do

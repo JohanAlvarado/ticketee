@@ -186,7 +186,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
@@ -220,7 +220,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-
+  #
+  config.omniauth :twitter, 'nZLqPVC83kWcFvOyk7Ndw','bjj0g45gtAUJnUgOTgDFAVtPwTtioRSROf2aao9vAQ', :scope => 'user,public_repo'
+  config.omniauth :github, '0536e43c1bdb37d163c2', 'b6bdedd468df8fdbb3fd37775a73c08561494177', :scope => 'user,public_repo'
+  #config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_KEY"]
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

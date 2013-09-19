@@ -21,7 +21,13 @@
     <nav>
       <ul>
         <% if current_user%>
-          <li>Signed in as <%= current_user.email %></li>
+          <li>Signed in as
+            <% unless current_user.name %>
+               <%= current_user.twitter_screen_name %>
+            <% else %>
+               <%= current_user.name %>
+            <%end%>  
+          </li>
           <% admins_only do%>
             <li><%= link_to "Admin", admin_root_path %></li>
           <% end%>
@@ -30,8 +36,13 @@
           <li><%= link_to "Sign up", new_user_path %></li>
           <li><%= link_to "Sign in", signin_path %></li>
           <li><%= link_to "Logout", logout_path %></li>
+          <br>
+          Or use 
+          <%= auth_provider(:twitter) %> <%= auth_provider(:github) %>
+          <%#<li><%= link_to "Sign In with twitter",user_omniauth_authorize_path(:twitter)%></li>
+          <%#<li><%= link_to "Sign in with Github", user_omniauth_authorize_path(:github)%></li>
         <% end%>
-      </ul>
+        </ul>
     </nav>
     <%= yield %>
   </body>
