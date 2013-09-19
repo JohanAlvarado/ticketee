@@ -1,4 +1,5 @@
 <ul id='tickets'>
+  <%= paginate @tickets %>
   <% @tickets.each do |ticket| %>
     <li>
       <%= ticket.id %> 
