@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913175028) do
+ActiveRecord::Schema.define(version: 20130918235926) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(version: 20130913175028) do
     t.boolean  "admin",                default: false
     t.string   "authentication_token"
     t.integer  "request_count",        default: 0
+    t.string   "twitter_id"
+    t.string   "twitter_screen_name"
+    t.string   "twitter_display_name"
+    t.integer  "github_id"
+    t.string   "github_user_name"
+    t.string   "github_display_name"
   end
 
 end
