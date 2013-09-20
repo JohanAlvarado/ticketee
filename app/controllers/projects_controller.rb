@@ -1,6 +1,9 @@
 class ProjectsController < ApplicationController
   before_action :authorize_admin!, except: [:index, :show]
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  caches_action :show, :cache_path => (proc do 
+    project_path(project_path(params[:id]) +"/#{current_user}/#{params[:page] || 1}")
+  end)
 
   def index
     @projects = Project.all
@@ -55,7 +58,7 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
     flash[:alert] = "The project you were looking" +
       " for could not be found."
     redirect_to projects_path
