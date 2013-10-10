@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   before_action :require_signin!, except: [:show, :index]
-  before_action :set_project
+  before_action :set_project ,only: [:show, :edit, :update, :destroy]
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -30,6 +30,13 @@ class TicketsController < ApplicationController
     @project.tickets = @tickets.page(params[:page]).per(5)
     redirect_to [@project]
   end
+
+  def download 
+    url = Ticket.find(305).assets.first.asset.url 
+    url_path = "#{Rails.root}/public#{url}"
+    send_file url_path
+  end
+
 
   private
 
