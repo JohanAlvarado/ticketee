@@ -27,6 +27,7 @@ Ticketee::Application.routes.draw do
         delete :remove
       end
     end
+      get 'download'
   end
 
   namespace :api do
