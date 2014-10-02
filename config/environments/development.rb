@@ -29,14 +29,5 @@ Ticketee::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  #config.action_mailer.delivery_method = :smtp
-  #config.action_mailer.smtp_settings = {
-    #:address              => "smtp.gmail.com",
-    #:port                 => 587,
-    #:domain               => 'gmail.com',
-    #:user_name            => 'johan.alvaradohdz@gmail.com',
-    #:enable_starttls_auto => true,
-    #:password             => 'r3dh4t2012????=',
-    #:authentication       => 'plain',
-    #:enable_starttls_auto => true  }
+ 
 end
